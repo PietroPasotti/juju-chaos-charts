@@ -1,0 +1,32 @@
+---
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChartServiceVersion
+metadata:
+  createdAt: 2026-05-09T00:00:00Z
+  name: juju-remove-unit
+  version: 0.1.0
+  annotations:
+    categories: Juju
+    vendor: Canonical
+spec:
+  displayName: Juju Remove Unit
+  categoryDescription: |
+    This fault removes specific units from a Juju application to test resilience to unit loss.
+    - It helps to test how applications handle unexpected unit removal.
+  keywords:
+    - Juju
+  platforms:
+    - Juju
+  maintainers:
+    - name: Canonical
+      email: litmus@canonical.com
+  chaosType: infra
+  labels:
+    app.kubernetes.io/component: chartserviceversion
+    app.kubernetes.io/version: ci
+  links:
+    - name: Documentation
+      url: https://juju.is/docs
+  icon:
+    - url:
+      mediatype: ""

@@ -1,0 +1,55 @@
+---
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChartServiceVersion
+metadata:
+  name: juju
+  version: 0.1.0
+  annotations:
+    categories: Juju
+    chartDescription: Injects faults on Juju-managed applications
+    executionPlane: "kubernetes"
+spec:
+  displayName: Juju
+  categoryDescription: >
+    Juju chaos contains different faults for Juju-managed applications to test service availability and resilience. It uses Juju commands to carry out fault logic against models, applications, units, and relations. It will install all the faults which can be used to inject chaos into Juju-managed environments.
+  faults:
+    - name: juju-integrate
+      description: Adds a relation (integration) between two Juju applications and validates the resulting state.
+      displayName: "Juju Integrate"
+    - name: juju-remove-relation
+      description: Removes a relation between two Juju applications to validate resilience to relation loss.
+      displayName: "Juju Remove Relation"
+    - name: juju-add-unit
+      description: Adds units to a Juju application to test horizontal scaling behavior.
+      displayName: "Juju Add Unit"
+    - name: juju-remove-unit
+      description: Removes specific units from a Juju application to test resilience to unit loss.
+      displayName: "Juju Remove Unit"
+    - name: juju-add-app
+      description: Deploys a new Juju application (charm) to test integration behavior.
+      displayName: "Juju Add App"
+    - name: juju-remove-app
+      description: Removes a Juju application to test dependent application resilience.
+      displayName: "Juju Remove App"
+    - name: juju-set-config
+      description: Modifies Juju application configuration to test config change handling.
+      displayName: "Juju Set Config"
+    - name: juju-run-action
+      description: Executes a Juju action on a unit to test action handling behavior.
+      displayName: "Juju Run Action"
+  keywords:
+    - Juju
+  maintainers:
+    - name: Canonical
+      email: litmus@canonical.com
+  minKubeVersion: 1.12.0
+  links:
+    - name: Juju Website
+      url: https://juju.is
+    - name: Source Code
+      url: https://github.com/canonical/juju-chaos-charts
+    - name: Documentation
+      url: https://juju.is/docs
+  icon:
+    - url:
+      mediatype: ""

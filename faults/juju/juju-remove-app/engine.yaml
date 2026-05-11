@@ -1,0 +1,22 @@
+---
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: juju-chaos
+  namespace: default
+spec:
+  engineState: 'active'
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: juju-remove-app
+      spec:
+        components:
+          env:
+            - name: TOTAL_CHAOS_DURATION
+              value: '30'
+
+            - name: JUJU_MODEL_UUID
+              value: ''
+
+            - name: APPLICATION
+              value: ''

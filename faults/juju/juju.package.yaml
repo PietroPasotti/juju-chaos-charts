@@ -1,0 +1,27 @@
+---
+packageName: juju
+faults:
+  - name: juju-integrate
+    CSV: juju-integrate.chartserviceversion.yaml
+    desc: "juju-integrate"
+  - name: juju-remove-relation
+    CSV: juju-remove-relation.chartserviceversion.yaml
+    desc: "juju-remove-relation"
+  - name: juju-add-unit
+    CSV: juju-add-unit.chartserviceversion.yaml
+    desc: "juju-add-unit"
+  - name: juju-remove-unit
+    CSV: juju-remove-unit.chartserviceversion.yaml
+    desc: "juju-remove-unit"
+  - name: juju-add-app
+    CSV: juju-add-app.chartserviceversion.yaml
+    desc: "juju-add-app"
+  - name: juju-remove-app
+    CSV: juju-remove-app.chartserviceversion.yaml
+    desc: "juju-remove-app"
+  - name: juju-set-config
+    CSV: juju-set-config.chartserviceversion.yaml
+    desc: "juju-set-config"
+  - name: juju-run-action
+    CSV: juju-run-action.chartserviceversion.yaml
+    desc: "juju-run-action"

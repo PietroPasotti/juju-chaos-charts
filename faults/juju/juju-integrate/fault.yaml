@@ -1,0 +1,86 @@
+---
+apiVersion: litmuschaos.io/v1alpha1
+description:
+  message: |
+    Adds a relation (integration) between two Juju applications and validates the resulting state.
+kind: ChaosExperiment
+metadata:
+  name: juju-integrate
+  labels:
+    name: juju-integrate
+    app.kubernetes.io/part-of: litmus
+    app.kubernetes.io/component: chaosexperiment
+    app.kubernetes.io/version: ci
+spec:
+  definition:
+    scope: Cluster
+    permissions:
+      - apiGroups: [""]
+        resources: ["pods"]
+        verbs:
+          [
+            "create",
+            "delete",
+            "get",
+            "list",
+            "patch",
+            "update",
+            "deletecollection",
+          ]
+      - apiGroups: [""]
+        resources: ["events"]
+        verbs: ["create", "get", "list", "patch", "update"]
+      - apiGroups: [""]
+        resources: ["secrets", "configmaps"]
+        verbs: ["get", "list"]
+      - apiGroups: [""]
+        resources: ["pods/log"]
+        verbs: ["get", "list", "watch"]
+      - apiGroups: [""]
+        resources: ["pods/exec"]
+        verbs: ["get", "list", "create"]
+      - apiGroups: ["batch"]
+        resources: ["jobs"]
+        verbs: ["create", "list", "get", "delete", "deletecollection"]
+      - apiGroups: ["litmuschaos.io"]
+        resources: ["chaosengines", "chaosexperiments", "chaosresults"]
+        verbs: ["create", "list", "get", "patch", "update", "delete"]
+      - apiGroups: [""]
+        resources: ["nodes"]
+        verbs: ["get", "list"]
+    image: "juju-go-runner:latest"
+    imagePullPolicy: IfNotPresent
+    args:
+      - -c
+      - ./experiments -name juju-integrate
+    command:
+      - /bin/bash
+    env:
+      - name: TOTAL_CHAOS_DURATION
+        value: "30"
+
+      - name: RAMP_TIME
+        value: ""
+
+      - name: JUJU_MODEL_UUID
+        value: ""
+
+      # Format: "app1:endpoint1"
+      - name: ENDPOINT1
+        value: ""
+
+      # Format: "app2:endpoint2"
+      - name: ENDPOINT2
+        value: ""
+
+      - name: JUJU_CREDENTIALS_FILE
+        value: "/tmp/juju-credentials.yaml"
+
+    labels:
+      name: juju-integrate
+      app.kubernetes.io/part-of: litmus
+      app.kubernetes.io/component: experiment-job
+      app.kubernetes.io/version: ci
+    secrets:
+      - name: juju-credentials
+        mountPath: /tmp/

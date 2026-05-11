@@ -1,0 +1,32 @@
+---
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChartServiceVersion
+metadata:
+  createdAt: 2026-05-09T00:00:00Z
+  name: juju-set-config
+  version: 0.1.0
+  annotations:
+    categories: Juju
+    vendor: Canonical
+spec:
+  displayName: Juju Set Config
+  categoryDescription: |
+    This fault modifies Juju application configuration to test config change handling.
+    - It helps to test how applications react to configuration changes at runtime.
+  keywords:
+    - Juju
+  platforms:
+    - Juju
+  maintainers:
+    - name: Canonical
+      email: litmus@canonical.com
+  chaosType: infra
+  labels:
+    app.kubernetes.io/component: chartserviceversion
+    app.kubernetes.io/version: ci
+  links:
+    - name: Documentation
+      url: https://juju.is/docs
+  icon:
+    - url:
+      mediatype: ""

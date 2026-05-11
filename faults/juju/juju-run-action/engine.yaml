@@ -1,0 +1,29 @@
+---
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: juju-chaos
+  namespace: default
+spec:
+  engineState: 'active'
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: juju-run-action
+      spec:
+        components:
+          env:
+            - name: TOTAL_CHAOS_DURATION
+              value: '30'
+
+            - name: JUJU_MODEL_UUID
+              value: ''
+
+            - name: UNIT
+              value: ''
+
+            - name: ACTION_NAME
+              value: ''
+
+            # JSON string of action parameters
+            - name: ACTION_PARAMS
+              value: ''

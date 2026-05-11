@@ -1,0 +1,32 @@
+---
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChartServiceVersion
+metadata:
+  createdAt: 2026-05-09T00:00:00Z
+  name: juju-remove-app
+  version: 0.1.0
+  annotations:
+    categories: Juju
+    vendor: Canonical
+spec:
+  displayName: Juju Remove App
+  categoryDescription: |
+    This fault removes a Juju application to test dependent application resilience.
+    - It helps to test how dependent applications handle the removal of a related application.
+  keywords:
+    - Juju
+  platforms:
+    - Juju
+  maintainers:
+    - name: Canonical
+      email: litmus@canonical.com
+  chaosType: infra
+  labels:
+    app.kubernetes.io/component: chartserviceversion
+    app.kubernetes.io/version: ci
+  links:
+    - name: Documentation
+      url: https://juju.is/docs
+  icon:
+    - url:
+      mediatype: ""
