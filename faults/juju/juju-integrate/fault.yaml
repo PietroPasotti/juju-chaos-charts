@@ -74,7 +74,7 @@ spec:
         value: ""
 
       - name: JUJU_CREDENTIALS_FILE
-        value: "/tmp/juju-credentials.yaml"
+        value: "/etc/juju-creds/juju-credentials.yaml"
 
     labels:
       name: juju-integrate
@@ -83,4 +83,4 @@ spec:
       app.kubernetes.io/version: ci
     secrets:
       - name: juju-credentials
-        mountPath: /tmp/
+        mountPath: /etc/juju-creds/
