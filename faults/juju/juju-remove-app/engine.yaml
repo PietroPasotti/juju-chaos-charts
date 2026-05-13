@@ -20,3 +20,47 @@ spec:
 
             - name: APPLICATION
               value: ''
+        probe:
+          - name: check-app-active
+            type: jujuAppProbe
+            jujuAppProbe/inputs:
+              appName: ""
+              targetStatus: "active"
+              comparator:
+                type: string
+                criteria: equal
+                value: "active"
+            mode: EOT
+            runProperties:
+              probeTimeout: 180s
+              interval: 5s
+              retry: 3
+          - name: check-unit-active
+            type: jujuUnitProbe
+            jujuUnitProbe/inputs:
+              unitName: ""
+              targetStatus: "active"
+              comparator:
+                type: string
+                criteria: equal
+                value: "active"
+            mode: EOT
+            runProperties:
+              probeTimeout: 180s
+              interval: 5s
+              retry: 3
+          - name: check-pebble-service
+            type: jujuPebbleProbe
+            jujuPebbleProbe/inputs:
+              unitName: ""
+              serviceName: ""
+              targetState: "active"
+              comparator:
+                type: string
+                criteria: equal
+                value: "active"
+            mode: EOT
+            runProperties:
+              probeTimeout: 180s
+              interval: 5s
+              retry: 3
